@@ -8,8 +8,9 @@ public class HomeScreen extends JFrame{
     private JButton listOfMealsPerButton;
     private JButton statisticsOfMealsDataButton;
     private JButton exitButton;
+    private JLabel imageLogo;
 
-public HomeScreen() {
+    public HomeScreen() {
     mealsDataButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -31,7 +32,7 @@ public HomeScreen() {
     exitButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            dispose();
         }
     });
 }
@@ -40,8 +41,14 @@ public HomeScreen() {
         HomeScreen s1 = new HomeScreen();
         s1.setContentPane(s1.Main);
         s1.setTitle("Meals App");
-        s1.setSize(300,400);
+        s1.setSize(600,500);
         s1.setVisible(true);
         s1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    //Μέθοδος για εισαγωγή εικόνας
+    private void createUIComponents() {
+        //Εισαγωγή εικόνας
+        imageLogo = new JLabel(new ImageIcon("image.png"));
     }
 }
