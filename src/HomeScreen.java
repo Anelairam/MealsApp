@@ -11,10 +11,19 @@ public class HomeScreen extends JFrame{
     private JLabel imageLogo;
 
     public HomeScreen() {
+        setContentPane(Main);
+        setTitle("Meals App");
+        setSize(600,500);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     mealsDataButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            if (e.getSource() == mealsDataButton) {
+                dispose();
+                searchByName searchName = new searchByName();
+                searchName.setVisible(true);
+            }
         }
     });
     listOfMealsPerButton.addActionListener(new ActionListener() {
@@ -39,11 +48,6 @@ public class HomeScreen extends JFrame{
 
     public static void main(String[] args) {
         HomeScreen s1 = new HomeScreen();
-        s1.setContentPane(s1.Main);
-        s1.setTitle("Meals App");
-        s1.setSize(600,500);
-        s1.setVisible(true);
-        s1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     //Μέθοδος για εισαγωγή εικόνας
