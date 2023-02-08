@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Feb 08 17:05:57 UTC 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0186-31fd-b843-000007703ac8 
+on database directory /home/pi/IdeaProjects/MealsApp/meals_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@67424e82 
+Loaded from file:/home/pi/.config/JetBrains/IntelliJIdea2022.2/jdbc-drivers/Apache%20Derby/10.15.2.0/derby-10.15.2.0.jar
+java.vendor=JetBrains s.r.o.
+java.runtime.version=17.0.4.1+7-b469.62
+user.dir=/home/pi/IdeaProjects/MealsApp
+os.name=Linux
+os.arch=amd64
+os.version=6.1.7-200.fc37.x86_64
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
