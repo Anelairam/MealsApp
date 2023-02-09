@@ -10,6 +10,7 @@ public class searchByName extends JFrame{
     private JTextField nameSearchValue;
     private JButton searchButton;
     private JList list1;
+    private JButton saveData;
 
     public searchByName(){
         setContentPane(nameSearchPanel);
@@ -31,6 +32,12 @@ public class searchByName extends JFrame{
                     HomeScreen s1 = new HomeScreen();
                     s1.setVisible(true);
                 }
+            }
+        });
+        saveData.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
