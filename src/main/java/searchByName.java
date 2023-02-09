@@ -9,7 +9,7 @@ public class searchByName extends JFrame{
     private JLabel nameSearch;
     private JTextField nameSearchValue;
     private JButton searchButton;
-    private JList list1;
+    private JList displayView;
     private JButton saveData;
 
     public searchByName(){
@@ -21,7 +21,8 @@ public class searchByName extends JFrame{
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String searchField = nameSearchValue.getText();
+                nameSearchCall search = new nameSearchCall(searchField);
             }
         });
         goBack.addActionListener(new ActionListener() {

@@ -5,8 +5,5 @@ public class Main {
 
         DBfunctions.CreateTableAndData();
         HomeScreen s1 = new HomeScreen();
-
-
-
     }
 }
