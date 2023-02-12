@@ -3,7 +3,9 @@
 public class Main {
     public static void main(String[] args) {
 
-        DBfunctions.CreateTableAndData();
+        //DBfunctions.CreateTableAndData();
         HomeScreen s1 = new HomeScreen();
+
+
     }
 }

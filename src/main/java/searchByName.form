@@ -64,7 +64,9 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <model/>
+        </properties>
       </component>
       <component id="92aa5" class="javax.swing.JButton" binding="saveData">
         <constraints>

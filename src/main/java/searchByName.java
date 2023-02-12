@@ -23,6 +23,7 @@ public class searchByName extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String searchField = nameSearchValue.getText();
                 nameSearchCall search = new nameSearchCall(searchField);
+                displayView.setListData(nameSearchCall.get_meal_results().toArray());
             }
         });
         goBack.addActionListener(new ActionListener() {
