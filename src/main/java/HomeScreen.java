@@ -29,7 +29,11 @@ public class HomeScreen extends JFrame{
     listOfMealsPerButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+         if(e.getSource()==listOfMealsPerButton){
+             dispose();
+             AvailableCategories s2=new AvailableCategories();
+             s2.setVisible(true);
+         }
         }
     });
     statisticsOfMealsDataButton.addActionListener(new ActionListener() {
