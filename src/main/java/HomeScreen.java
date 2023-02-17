@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class HomeScreen extends JFrame{
     private JPanel Main;
@@ -45,10 +47,19 @@ public class HomeScreen extends JFrame{
     exitButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            dispose();
+            JFrame frame = new JFrame("Exit");
+
+            if (JOptionPane.showConfirmDialog( frame,"Confirm if you want to Exit","MealsAPP",
+                    JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
+                System.exit(0);
+                dispose();
+            }
         }
+
+
     });
-}
+
+    }
 
     public static void main(String[] args) {
         HomeScreen s1 = new HomeScreen();
