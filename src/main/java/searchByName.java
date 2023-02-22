@@ -66,6 +66,7 @@ public class searchByName extends JFrame{
             }
         });
 
+        //button delete meal from db
         deleteData.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -85,6 +86,20 @@ public class searchByName extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 DBfunctions.selectAll();
+            }
+        });
+
+        editMealButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() == editMealButton) {
+ //                       dispose();
+                        int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
+                        DBfunctions.selectMeal(idm);
+                        MealViewData mvd = new MealViewData();
+                        mvd.setVisible(true);
+                    }
+
             }
         });
     }

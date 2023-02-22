@@ -3,6 +3,10 @@ import java.sql.*;
 
 public class DBfunctions {
 
+    private static int idMeal, stats_view;
+    private static String strMeal, strCategory, strArea, strInstructions;
+
+
     //Create db table
     static void CreateTableAndData(){
         try{
@@ -76,7 +80,9 @@ public class DBfunctions {
         }
     }
 
-    //Selection query
+    //Edit recordset
+
+    //Selection query all data
     static void selectAll(){
         try{
             Connection connection = connect();
@@ -94,7 +100,41 @@ public class DBfunctions {
         }
     }
 
+    //Selection query specific meal
+    static void selectMeal(int idMeal){
+        DBfunctions.idMeal = idMeal;
+        try{
+            Connection connection = connect();
+            String selectSQL = "Select * FROM MEAL where IDMEAL = ?";
+            PreparedStatement stmt = connection.prepareStatement(selectSQL);
+            stmt.setInt(1, idMeal);
+          //  int count = preparedStatement.execute();
+            ResultSet rs =  stmt.executeQuery();
+            strMeal = "";
+            strCategory = "";
+            strArea = "";
+            strInstructions = "";
+            if (!rs.next()) {
+                System.out.println("No Data found in the Database");
+                JOptionPane.showMessageDialog(null,"No Data found in the Database");
+            } else {
+                System.out.println("Data found to edit");
+                JOptionPane.showMessageDialog(null,"Data found to edit");
+                //variables used by getters
+                strMeal = rs.getString("STRMEAL");
+                strCategory = rs.getString("STRCATEGORY");
+                strArea = rs.getString("STRAREA");
+                strInstructions = rs.getString("STRINSTRUCTIONS");
+            }
 
+            stmt.close();
+            connection.close();
+            System.out.println("Done!");
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getLocalizedMessage());
+        }
+
+    }
     //ppep underconstruction
     static void checkdbifExist(){
         try{
@@ -121,5 +161,24 @@ public class DBfunctions {
             throwables.printStackTrace();
         }
         return connection;
+    }
+
+    public static int getIdMeal(){
+        return idMeal;
+    }
+
+    public static String getStrMeal () {
+        return strMeal;
+    }
+
+    public static String getStrArea(){
+        return strArea;
+    }
+
+    public static String getStrCategory() {
+        return strCategory;
+    }
+    public static String getStrInstructions() {
+        return strInstructions;
     }
 }
