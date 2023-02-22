@@ -11,6 +11,14 @@ public class MealViewData extends JFrame {
     private JTextField strInstructions;
     private JButton saveButton;
     private JButton goBack;
+    private JLabel miniLogo;
+    private JLabel id;
+    private JLabel mealName;
+    private JLabel mealCat;
+    private JLabel mealArea;
+    private JLabel mealInst;
+    private JTextArea textAreaInst;
+    private JScrollPane scroll;
 
 
     public MealViewData() {
@@ -24,7 +32,13 @@ public class MealViewData extends JFrame {
         strmeal.setText(DBfunctions.getStrMeal());
         strCategory.setText(DBfunctions.getStrCategory());
         strArea.setText(DBfunctions.getStrArea());
-        strInstructions.setText(DBfunctions.getStrInstructions());
+        textAreaInst.setText(DBfunctions.getStrInstructions());
+        textAreaInst.setLineWrap(true);
+
+
+
+
+
 
         //System.out.println(DBfunctions.getIdMeal()+"-"+DBfunctions.getStrMeal()+"-"+DBfunctions.getStrCategory()+"-"+DBfunctions.getStrArea()+"-"+DBfunctions.getStrInstructions());
         goBack.addActionListener(new ActionListener() {
@@ -36,8 +50,9 @@ public class MealViewData extends JFrame {
             }
         });
     }
+
     private void createUIComponents() {
         // TODO: place custom component creation code here
+        miniLogo = new JLabel(new ImageIcon("image.png"));
     }
-
 }

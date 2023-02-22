@@ -13,6 +13,8 @@ public class searchByName extends JFrame{
     private JButton deleteData;
     private JButton editMealButton;
     private JButton viewDBButton;
+    private JScrollPane scroll;
+    private JButton showDetails;
 
     public searchByName(){
         setContentPane(nameSearchPanel);
@@ -59,6 +61,7 @@ public class searchByName extends JFrame{
                 //System.out.println("mouse click displayview" + displayView.getSelectedIndex());
                 MealItems.mealList.get(displayView.getSelectedIndex());
                 int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
+                showDetails.setVisible(true);
 
                 //System.out.println("-->" + idm);
 
@@ -99,6 +102,12 @@ public class searchByName extends JFrame{
                         MealViewData mvd = new MealViewData();
                         mvd.setVisible(true);
                     }
+
+            }
+        });
+        showDetails.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
             }
         });

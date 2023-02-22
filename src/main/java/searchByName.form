@@ -58,16 +58,6 @@
           <text value="Go Back"/>
         </properties>
       </component>
-      <component id="be8c2" class="javax.swing.JList" binding="displayView">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties>
-          <model/>
-        </properties>
-      </component>
       <component id="92aa5" class="javax.swing.JButton" binding="saveData">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -98,6 +88,30 @@
         </constraints>
         <properties>
           <text value="View DB"/>
+        </properties>
+      </component>
+      <scrollpane id="4c521" binding="scroll">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="be8c2" class="javax.swing.JList" binding="displayView">
+            <constraints/>
+            <properties>
+              <model/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="42887" class="javax.swing.JButton" binding="showDetails">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Show Details"/>
+          <visible value="false"/>
         </properties>
       </component>
     </children>
