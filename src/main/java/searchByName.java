@@ -108,7 +108,14 @@ public class searchByName extends JFrame{
         showDetails.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String strM = MealItems.mealList.get(displayView.getSelectedIndex()).getStrmeal();
+                String strA = MealItems.mealList.get(displayView.getSelectedIndex()).getStrarea();
+                String strC = MealItems.mealList.get(displayView.getSelectedIndex()).getStrcat();
+                String strI = MealItems.mealList.get(displayView.getSelectedIndex()).getStrinstr();
+                System.out.println();
+                MealsInfo meal = new MealsInfo();
+                meal.setMealInfo(strM, strA, strC, strI);
+                meal.setVisible(true);
             }
         });
     }

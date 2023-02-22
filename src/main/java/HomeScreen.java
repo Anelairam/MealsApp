@@ -16,6 +16,7 @@ public class HomeScreen extends JFrame{
         setContentPane(Main);
         setTitle("Meals App");
         setSize(600,500);
+        setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     mealsDataButton.addActionListener(new ActionListener() {

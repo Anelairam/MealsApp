@@ -36,10 +36,6 @@ public class MealViewData extends JFrame {
         textAreaInst.setLineWrap(true);
 
 
-
-
-
-
         //System.out.println(DBfunctions.getIdMeal()+"-"+DBfunctions.getStrMeal()+"-"+DBfunctions.getStrCategory()+"-"+DBfunctions.getStrArea()+"-"+DBfunctions.getStrInstructions());
         goBack.addActionListener(new ActionListener() {
             @Override
@@ -53,6 +49,6 @@ public class MealViewData extends JFrame {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        miniLogo = new JLabel(new ImageIcon("image.png"));
+        miniLogo = new JLabel(new ImageIcon("mini_image.png"));
     }
 }
