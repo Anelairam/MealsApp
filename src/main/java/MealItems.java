@@ -7,7 +7,7 @@ public class MealItems implements IGiveMealList{
     private String strcat;
     private String strinstr;
 
-    static List <MealItems> mealList = nameSearchCall.getMealList();
+    static List <MealItems> mealList = NameSearchCall.getMealList();
     public MealItems(int idMeal, String strMeal, String strArea, String strCategory, String strInstructions) {
         this.idmeal = idMeal;
         this.strmeal = strMeal;

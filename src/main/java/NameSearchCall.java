@@ -9,13 +9,13 @@ import com.google.gson.*;
 import javax.swing.*;
 
 
-public class nameSearchCall {
+public class NameSearchCall {
 
     //Create list to save results
     static List<String> meal_name = new ArrayList<>();
     static List<MealItems> mealList = new ArrayList<>();
 
-    public nameSearchCall(String userEntry) {
+    public NameSearchCall(String userEntry) {
         String baseUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
         String urlToCall = baseUrl + userEntry;
         OkHttpClient client = new OkHttpClient();

@@ -5,8 +5,9 @@ import java.awt.event.ActionListener;
 public class AvailableCategories extends JFrame {
     private JPanel KategoryList;
     private JLabel Logo;
-    private JList ViewList;
-    private JButton getCategoriesButton;
+    private JComboBox selectBox;
+    private JLabel categoryLabel;
+    private JList mealList;
 
     public AvailableCategories(){
         setContentPane(KategoryList);
@@ -14,10 +15,13 @@ public class AvailableCategories extends JFrame {
         setSize(600,500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getCategoriesButton.addActionListener(new ActionListener() {
+
+        selectBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CategoryListCall c1=new CategoryListCall();
+//                CategoryListCall category = new CategoryListCall();
+//                ViewList.setListData(CategoryListCall.getCategoryResults().toArray());
+                mealList.setVisible(true);
             }
         });
     }

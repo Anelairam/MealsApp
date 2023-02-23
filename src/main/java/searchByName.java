@@ -26,8 +26,8 @@ public class searchByName extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String searchField = nameSearchValue.getText();
-                nameSearchCall search = new nameSearchCall(searchField);
-                displayView.setListData(nameSearchCall.get_meal_results().toArray());
+                NameSearchCall search = new NameSearchCall(searchField);
+                displayView.setListData(NameSearchCall.get_meal_results().toArray());
             }
         });
         goBack.addActionListener(new ActionListener() {

@@ -4,13 +4,18 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class CategoryListCall {
+    static List<String> category_name = new ArrayList<>();
+    static List<CategoryItems> categoryList = new ArrayList<>();
+
     public CategoryListCall() {
         String CategoryUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(CategoryUrl).build();
-
 
         try (Response response = client.newCall(request).execute()) {
             System.out.println("Response : " + response);
@@ -18,25 +23,28 @@ public class CategoryListCall {
                 String responseString = response.body().string();
                 System.out.println(responseString);
                 //ppep 11.02.23 - Create Json
-                //GsonBuilder builder = new GsonBuilder();
-                //builder.setPrettyPrinting();
-                //Gson gson = builder.create();
+                GsonBuilder builder = new GsonBuilder();
+                builder.setPrettyPrinting();
+                Gson gson = builder.create();
 
-                //JsonObject json = gson.fromJson(responseString, JsonObject.class);
-                //System.out.println(json);
+                JsonObject json = gson.fromJson(responseString, JsonObject.class);
+                System.out.println(json);
 
-                //JsonArray mealsArray = json.get("meals").getAsJsonArray();
+                JsonArray categoriesArray = json.get("categories").getAsJsonArray();
                 //System.out.println(mealsArray);
 
                 //initialize
-                //meal_name.clear();
+                category_name.clear();
+                categoryList.clear();
                 //Input results from json
-                //for (int i = 0 ; i<= mealsArray.size()-1;i++) {
-                // JsonElement jsonElement=mealsArray.get(i);
-                // JsonObject m = jsonElement.getAsJsonObject();
-                // meal_name.add(m.get("strMeal").getAsString()) ;
-                //           System.out.println(i + "-" + meal_name.get(i));
-                //}          //ppep 11.02.23 - Create Json
+                for (int i = 0 ; i<= categoriesArray.size()-1;i++) {
+                    JsonElement jsonElement = categoriesArray.get(i);
+                    JsonObject m = jsonElement.getAsJsonObject();
+                    category_name.add(m.get("strCategory").getAsString());
+                    CategoryItems catitem = new CategoryItems(m.get("idCategory").getAsInt(), m.get("strCategory").getAsString());
+                    categoryList.add(catitem);
+                    System.out.println("Cat item " + categoryList);
+                }
 
             } else {
                 System.out.println("Not found : " + response);
@@ -45,4 +53,8 @@ public class CategoryListCall {
             e.printStackTrace();
         }
     }
+
+    public  static  List<String> getCategoryResults() {return category_name;}
+
+    public static  List<CategoryItems> getCategoryList(){return categoryList;}
 }
