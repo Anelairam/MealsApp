@@ -6,6 +6,7 @@ public class DBfunctions {
     private static int idMeal, stats_view;
     private static String strMeal, strCategory, strArea, strInstructions;
 
+    private static boolean fnd;
 
     //Create db table
     static void CreateTableAndData(){
@@ -101,8 +102,9 @@ public class DBfunctions {
     }
 
     //Selection query specific meal
-    static void selectMeal(int idMeal){
+    static void selectMeal(int idMeal, boolean found){
         DBfunctions.idMeal = idMeal;
+
         try{
             Connection connection = connect();
             String selectSQL = "Select * FROM MEAL where IDMEAL = ?";
@@ -117,9 +119,12 @@ public class DBfunctions {
             if (!rs.next()) {
                 System.out.println("No Data found in the Database");
                 JOptionPane.showMessageDialog(null,"No Data found in the Database");
+                fnd = false;
             } else {
                 System.out.println("Data found to edit");
                 JOptionPane.showMessageDialog(null,"Data found to edit");
+                fnd = true;
+
                 //variables used by getters
                 strMeal = rs.getString("STRMEAL");
                 strCategory = rs.getString("STRCATEGORY");
@@ -181,4 +186,9 @@ public class DBfunctions {
     public static String getStrInstructions() {
         return strInstructions;
     }
+
+    public static boolean getfound(){ return fnd; }
+
+
 }
+

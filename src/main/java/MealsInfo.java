@@ -4,16 +4,20 @@ import java.awt.event.ActionListener;
 
 public class MealsInfo extends JFrame{
     private JPanel mealsInfo;
+    private JLabel idMea;
     private JLabel miniLogo;
     private JLabel strName;
     private JLabel strCat;
     private JLabel strArea;
     private JLabel strInst;
+    private JTextField idMeal;
     private JTextField strMeal;
     private JTextField strCate;
     private JTextField strMealArea;
     private JTextArea strInstructions;
     private JButton btnBack;
+    private JButton saveData;
+
 
     public MealsInfo() {
         setContentPane(mealsInfo);
@@ -31,7 +35,14 @@ public class MealsInfo extends JFrame{
         });
     }
 
-        public void setMealInfo(String name, String area, String category, String inst){
+        public void setMealInfo(int idm, String name, String area, String category, String inst, boolean sedit){
+            if (sedit == true){
+                strMeal.setEditable(true);
+                strCate.setEditable(true);
+                strMealArea.setEditable(true);
+                strInstructions.setEditable(true);
+            }
+            idMeal.setText(String.valueOf(idm));
             strMeal.setText(name);
             strCate.setText(category);
             strMealArea.setText(area);

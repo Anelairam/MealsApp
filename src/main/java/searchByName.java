@@ -64,8 +64,6 @@ public class searchByName extends JFrame{
                 showDetails.setVisible(true);
 
                 //System.out.println("-->" + idm);
-
-
             }
         });
 
@@ -98,23 +96,39 @@ public class searchByName extends JFrame{
                     if (e.getSource() == editMealButton) {
  //                       dispose();
                         int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
-                        DBfunctions.selectMeal(idm);
-                        MealViewData mvd = new MealViewData();
-                        mvd.setVisible(true);
+                        boolean found = false;
+                        DBfunctions.selectMeal(idm, found);
+                        int idM = DBfunctions.getIdMeal();
+                        String strM = DBfunctions.getStrMeal();
+                        String strA = DBfunctions.getStrCategory();
+                        String strC = DBfunctions.getStrArea();
+                        String strI = DBfunctions.getStrInstructions();
+                        boolean sedit = true ;
+                        System.out.println();
+
+                        if (DBfunctions.getfound()==true) {
+                            MealsInfo meal = new MealsInfo();
+                            meal.setMealInfo(idM, strM, strA, strC, strI, sedit);
+                            meal.setVisible(true);
+                        }
                     }
 
             }
         });
+
+        //show detail button
         showDetails.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int idM = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
                 String strM = MealItems.mealList.get(displayView.getSelectedIndex()).getStrmeal();
                 String strA = MealItems.mealList.get(displayView.getSelectedIndex()).getStrarea();
                 String strC = MealItems.mealList.get(displayView.getSelectedIndex()).getStrcat();
                 String strI = MealItems.mealList.get(displayView.getSelectedIndex()).getStrinstr();
+                boolean sedit = false;
                 System.out.println();
                 MealsInfo meal = new MealsInfo();
-                meal.setMealInfo(strM, strA, strC, strI);
+                meal.setMealInfo(idM, strM, strA, strC, strI, sedit);
                 meal.setVisible(true);
             }
         });
