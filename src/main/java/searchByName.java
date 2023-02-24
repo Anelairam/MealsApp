@@ -20,7 +20,7 @@ public class searchByName extends JFrame{
     public searchByName(){
         setContentPane(nameSearchPanel);
         setTitle("Search meals by name");
-        setSize(600, 500);
+        setSize(650, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         searchButton.addActionListener(new ActionListener() {

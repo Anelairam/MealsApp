@@ -15,7 +15,7 @@ public class HomeScreen extends JFrame{
     public HomeScreen() {
         setContentPane(Main);
         setTitle("Meals App");
-        setSize(600,500);
+        setSize(650,500);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

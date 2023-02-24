@@ -8,11 +8,12 @@ public class AvailableCategories extends JFrame {
     private JComboBox selectBox;
     private JLabel categoryLabel;
     private JList mealList;
+    private JButton goBack;
 
     public AvailableCategories(){
         setContentPane(KategoryList);
         setTitle("Category List");
-        setSize(600,500);
+        setSize(650,500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -22,6 +23,14 @@ public class AvailableCategories extends JFrame {
 //                CategoryListCall category = new CategoryListCall();
 //                ViewList.setListData(CategoryListCall.getCategoryResults().toArray());
                 mealList.setVisible(true);
+            }
+        });
+        goBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                HomeScreen s1 = new HomeScreen();
+                s1.setVisible(true);
             }
         });
     }

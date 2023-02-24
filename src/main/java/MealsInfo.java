@@ -22,7 +22,7 @@ public class MealsInfo extends JFrame{
     public MealsInfo() {
         setContentPane(mealsInfo);
         setTitle("Meal Information");
-        setSize(600,500);
+        setSize(650,500);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,6 +31,8 @@ public class MealsInfo extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                HomeScreen s1 = new HomeScreen();
+                s1.setVisible(true);
             }
         });
         saveData.addActionListener(new ActionListener() {
