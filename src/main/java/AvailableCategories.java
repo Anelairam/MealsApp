@@ -3,26 +3,32 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AvailableCategories extends JFrame {
-    private JPanel KategoryList;
+    private JPanel CategoryList;
     private JLabel Logo;
     private JComboBox selectBox;
     private JLabel categoryLabel;
-    private JList mealList;
+    private JList mealNameList;
     private JButton goBack;
 
     public AvailableCategories(){
-        setContentPane(KategoryList);
+        setContentPane(CategoryList);
         setTitle("Category List");
         setSize(650,500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        CategoryListCall category = new CategoryListCall();
+        for (int i=0; i<category.getCategoryResults().size(); i++){
+                selectBox.addItem(CategoryListCall.getCategoryResults().get(i));
+        }
+
         selectBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                CategoryListCall category = new CategoryListCall();
-//                ViewList.setListData(CategoryListCall.getCategoryResults().toArray());
-                mealList.setVisible(true);
+                MealByCategoryCall categoryName = new MealByCategoryCall(selectBox.getSelectedItem().toString());
+//             selectBox.getSelectedItem();
+                mealNameList.setVisible(true);
+                mealNameList.setListData(MealByCategoryCall.getMealNameResults().toArray());
             }
         });
         goBack.addActionListener(new ActionListener() {

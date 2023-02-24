@@ -31,7 +31,6 @@ public class CategoryListCall {
                 System.out.println(json);
 
                 JsonArray categoriesArray = json.get("categories").getAsJsonArray();
-                //System.out.println(mealsArray);
 
                 //initialize
                 category_name.clear();
@@ -43,7 +42,6 @@ public class CategoryListCall {
                     category_name.add(m.get("strCategory").getAsString());
                     CategoryItems catitem = new CategoryItems(m.get("idCategory").getAsInt(), m.get("strCategory").getAsString());
                     categoryList.add(catitem);
-                    System.out.println("Cat item " + categoryList);
                 }
 
             } else {
