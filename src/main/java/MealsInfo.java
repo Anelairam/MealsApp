@@ -33,6 +33,19 @@ public class MealsInfo extends JFrame{
                 dispose();
             }
         });
+        saveData.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int idm = Integer.valueOf(idMeal.getText());
+                String strm = strMeal.getText();
+                String stra = strMealArea.getText();
+                String strc = strCate.getText();
+                String stri = strInstructions.getText();
+                DBfunctions.UpdateMeal(idm, strm, stra, strc, stri );
+                System.out.println("update db");
+
+            }
+        });
     }
 
         public void setMealInfo(int idm, String name, String area, String category, String inst, boolean sedit){

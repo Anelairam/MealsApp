@@ -25,7 +25,7 @@ public class DBfunctions {
             //statement.executeUpdate(insertSQLv1);
             statement.close();
             connection.close();
-            System.out.println("Done!");
+            System.out.println("Done Create!");
         } catch (SQLException throwables) {
             System.out.println(throwables.getLocalizedMessage());
         }
@@ -45,18 +45,48 @@ public class DBfunctions {
 
             int count = preparedStatement.executeUpdate();
             if (count>0) {
-                System.out.println(count+" record inserted");
+                //System.out.println(count+" record inserted");
                 JOptionPane.showMessageDialog(null,"record inserted");
             }else{
-                System.out.println("Something went wrong. Check the exception");
+                //System.out.println("Something went wrong. Check the exception");
+                JOptionPane.showMessageDialog(null,"record inserted");
             }
             preparedStatement.close();
             connection.close();
-            System.out.println("Done!");
+            System.out.println("Done Insert!");
         } catch (SQLException throwables) {
             System.out.println(throwables.getLocalizedMessage());
         }
     }
+
+    //update meal
+    static void UpdateMeal (int idMeal, String strMeal, String strArea, String strCategory, String strInstructions){
+        try{
+            Connection connection = connect();
+            String insertSQL = "Update MEAL set STRMEAL = ?, STRCATEGORY = ?, STRAREA = ?, STRINSTRUCTIONS = ? where IDMEAL = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement.setString(1,strMeal);
+            preparedStatement.setString(2,strArea);
+            preparedStatement.setString(3,strCategory);
+            preparedStatement.setString(4,strInstructions);
+            preparedStatement.setInt(5, idMeal);
+
+            int count = preparedStatement.executeUpdate();
+            if (count>0) {
+                //System.out.println(count+" record updated");
+                JOptionPane.showMessageDialog(null,"record updated");
+            }else{
+                //System.out.println("Something went wrong. Check the exception");
+                JOptionPane.showMessageDialog(null,"record updated");
+            }
+            preparedStatement.close();
+            connection.close();
+            System.out.println("Done Update!");
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getLocalizedMessage());
+        }
+    }
+
 
     //Delete meal from the database
     static void DeleteNewMeal (int idMeal){
@@ -68,14 +98,15 @@ public class DBfunctions {
             int count = preparedStatement.executeUpdate();
 
             if (count>0) {
-                System.out.println(count+" record deleted");
+                //System.out.println(count+"DB - record deleted");
                 JOptionPane.showMessageDialog(null,"record deleted");
             }else{
-                System.out.println("Something went wrong. Check the exception");
+                //System.out.println("DB - record not found");
+                JOptionPane.showMessageDialog(null,"record deleted");
             }
             preparedStatement.close();
             connection.close();
-            System.out.println("Done!");
+            System.out.println("Done Delete!");
         } catch (SQLException throwables) {
             System.out.println(throwables.getLocalizedMessage());
         }
@@ -95,7 +126,7 @@ public class DBfunctions {
             }
             statement.close();
             connection.close();
-            System.out.println("Done!");
+            System.out.println("Done Select All!");
         } catch (SQLException throwables) {
             System.out.println(throwables.getLocalizedMessage());
         }
@@ -117,12 +148,12 @@ public class DBfunctions {
             strArea = "";
             strInstructions = "";
             if (!rs.next()) {
-                System.out.println("No Data found in the Database");
+                //System.out.println("No Data found in the Database");
                 JOptionPane.showMessageDialog(null,"No Data found in the Database");
                 fnd = false;
             } else {
-                System.out.println("Data found to edit");
-                JOptionPane.showMessageDialog(null,"Data found to edit");
+                //System.out.println("Data found to edit");
+                //JOptionPane.showMessageDialog(null,"Data found in the Database to edit");
                 fnd = true;
 
                 //variables used by getters
@@ -134,7 +165,7 @@ public class DBfunctions {
 
             stmt.close();
             connection.close();
-            System.out.println("Done!");
+            System.out.println("Done Select Meal!");
         } catch (SQLException throwables) {
             System.out.println(throwables.getLocalizedMessage());
         }

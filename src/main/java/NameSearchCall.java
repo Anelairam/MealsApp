@@ -27,7 +27,7 @@ public class NameSearchCall {
             if (response.isSuccessful() && response.body() != null) {
                 String responseString = response.body().string();
                 System.out.println(responseString);
-            //ppep 11.02.23 - Create Json
+                //ppep 11.02.23 - Create Json
                 GsonBuilder builder = new GsonBuilder();
                 builder.setPrettyPrinting();
                 Gson gson = builder.create();
@@ -35,35 +35,41 @@ public class NameSearchCall {
                 JsonObject json = gson.fromJson(responseString, JsonObject.class);
                 System.out.println(json);
 
-                JsonArray mealsArray = json.get("meals").getAsJsonArray();
+                JsonArray mealsArray = null;
+                if (json.get("meals").isJsonNull()) {
+                    //System.out.println("Data not found");
+                    JOptionPane.showMessageDialog(null, "Data not found");
+                } else {
+                    mealsArray = json.get("meals").getAsJsonArray();
+                }
                 //System.out.println(mealsArray);
 
                 //initialize
                 meal_name.clear();
                 mealList.clear();
                 //Input results from json
-                for (int i = 0 ; i<= mealsArray.size()-1;i++) {
-                    JsonElement jsonElement=mealsArray.get(i);
+                for (int i = 0; i <= mealsArray.size() - 1; i++) {
+                    JsonElement jsonElement = mealsArray.get(i);
                     JsonObject m = jsonElement.getAsJsonObject();
                     meal_name.add(m.get("strMeal").getAsString());
-
-          //        List <MealItems> mealList = nameSearchCall.
+                    //              System.out.printf(m.get("Meals"));
+                    //        List <MealItems> mealList = nameSearchCall.
                     MealItems mlitm = new MealItems
                             (m.get("idMeal").getAsInt(),
-                            m.get("strMeal").getAsString(),
-                            m.get("strArea").getAsString(),
-                            m.get("strCategory").getAsString(),
-                            m.get("strInstructions").getAsString());
+                                    m.get("strMeal").getAsString(),
+                                    m.get("strArea").getAsString(),
+                                    m.get("strCategory").getAsString(),
+                                    m.get("strInstructions").getAsString());
 
                     mealList.add(mlitm);
-                //    System.out.println("-->" + mealList.get(i).getIdmeal());
-                //    System.out.println("-->" + mealList.get(i).getStrmeal());
-                //    System.out.println("-->" + mealList.get(i).getStrarea());
-                //    System.out.println("-->" + mealList.get(i).getStrcat());
-                //    System.out.println("-->" + mealList.get(i).getStrinstr());
-                //    System.out.println("-->" + mealList);
+                    //    System.out.println("-->" + mealList.get(i).getIdmeal());
+                    //    System.out.println("-->" + mealList.get(i).getStrmeal());
+                    //    System.out.println("-->" + mealList.get(i).getStrarea());
+                    //    System.out.println("-->" + mealList.get(i).getStrcat());
+                    //    System.out.println("-->" + mealList.get(i).getStrinstr());
+                    //    System.out.println("-->" + mealList);
 
-                //    System.out.println(i + "-" + meal_name.get(i));
+                    //    System.out.println(i + "-" + meal_name.get(i));
                 } //ppep 11.02.23 - Create Json
 
             } else {
@@ -72,7 +78,6 @@ public class NameSearchCall {
             }
         } catch (IOException e) {
 
-            JOptionPane.showMessageDialog(null,"Data not found");
             e.printStackTrace();
         }
     }

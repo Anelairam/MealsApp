@@ -25,6 +25,7 @@ public class searchByName extends JFrame{
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                displayView.clearSelection();
                 String searchField = nameSearchValue.getText();
                 NameSearchCall search = new NameSearchCall(searchField);
                 displayView.setListData(NameSearchCall.get_meal_results().toArray());
@@ -40,6 +41,8 @@ public class searchByName extends JFrame{
                 }
             }
         });
+
+        //save data to DB
         saveData.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,6 +57,8 @@ public class searchByName extends JFrame{
                 }
             }
         });
+
+        //
         displayView.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -82,6 +87,8 @@ public class searchByName extends JFrame{
                 }
             }
         });
+
+        //view database contents on the terminal
         viewDBButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -95,6 +102,7 @@ public class searchByName extends JFrame{
             public void actionPerformed(ActionEvent e) {
                     if (e.getSource() == editMealButton) {
  //                       dispose();
+
                         int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
                         boolean found = false;
                         DBfunctions.selectMeal(idm, found);
@@ -132,6 +140,7 @@ public class searchByName extends JFrame{
                 meal.setVisible(true);
             }
         });
+
     }
 
     private void createUIComponents() {
