@@ -36,14 +36,18 @@ public class MealsInfo extends JFrame{
         saveData.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                int idm = Integer.valueOf(idMeal.getText());
-                String strm = strMeal.getText();
-                String stra = strMealArea.getText();
-                String strc = strCate.getText();
-                String stri = strInstructions.getText();
-                DBfunctions.UpdateMeal(idm, strm, stra, strc, stri );
-                System.out.println("update db");
+                JFrame frame = new JFrame("Update");
 
+                if (JOptionPane.showConfirmDialog( frame,"Save changes to Database?","MealsAPP",
+                        JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
+                    int idm = Integer.valueOf(idMeal.getText());
+                    String strm = strMeal.getText();
+                    String stra = strMealArea.getText();
+                    String strc = strCate.getText();
+                    String stri = strInstructions.getText();
+                    DBfunctions.UpdateMeal(idm, strm, stra, strc, stri);
+                    System.out.println("update db");
+                }
             }
         });
     }

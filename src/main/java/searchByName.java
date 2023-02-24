@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class searchByName extends JFrame{
@@ -77,7 +78,7 @@ public class searchByName extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                JFrame frame = new JFrame("Exit");
+                JFrame frame = new JFrame("Delete");
 
                 if (JOptionPane.showConfirmDialog( frame,"Delete Meal from the database","MealsAPP",
                         JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
@@ -102,22 +103,25 @@ public class searchByName extends JFrame{
             public void actionPerformed(ActionEvent e) {
                     if (e.getSource() == editMealButton) {
  //                       dispose();
+                        JFrame frame = new JFrame("Edit");
+                        if (JOptionPane.showConfirmDialog( frame,"Edit Meal ?","MealsAPP",
+                                JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
+                            int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
+                            boolean found = false;
+                            DBfunctions.selectMeal(idm, found);
+                            int idM = DBfunctions.getIdMeal();
+                            String strM = DBfunctions.getStrMeal();
+                            String strA = DBfunctions.getStrCategory();
+                            String strC = DBfunctions.getStrArea();
+                            String strI = DBfunctions.getStrInstructions();
+                            boolean sedit = true;
+                            System.out.println();
 
-                        int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
-                        boolean found = false;
-                        DBfunctions.selectMeal(idm, found);
-                        int idM = DBfunctions.getIdMeal();
-                        String strM = DBfunctions.getStrMeal();
-                        String strA = DBfunctions.getStrCategory();
-                        String strC = DBfunctions.getStrArea();
-                        String strI = DBfunctions.getStrInstructions();
-                        boolean sedit = true ;
-                        System.out.println();
-
-                        if (DBfunctions.getfound()==true) {
-                            MealsInfo meal = new MealsInfo();
-                            meal.setMealInfo(idM, strM, strA, strC, strI, sedit);
-                            meal.setVisible(true);
+                            if (DBfunctions.getfound() == true) {
+                                MealsInfo meal = new MealsInfo();
+                                meal.setMealInfo(idM, strM, strA, strC, strI, sedit);
+                                meal.setVisible(true);
+                            }
                         }
                     }
 

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri Feb 24 01:42:37 EET 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0186-80a8-48e1-0000024f61d8 
+Fri Feb 24 03:24:21 EET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0186-8105-69c9-0000025a2708 
 on database directory /home/pi/IdeaProjects/MealsApp/meals_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7ad041f3 
 Loaded from file:/home/pi/.m2/repository/org/apache/derby/derby/10.15.2.0/derby-10.15.2.0.jar
 java.vendor=Red Hat, Inc.
