@@ -16,6 +16,7 @@ public class searchByName extends JFrame{
     private JButton viewDBButton;
     private JScrollPane scroll;
     private JButton showDetails;
+    private String searchValue;
 
     public searchByName(){
         setContentPane(nameSearchPanel);
@@ -27,8 +28,8 @@ public class searchByName extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayView.clearSelection();
-                String searchField = nameSearchValue.getText();
-                NameSearchCall search = new NameSearchCall(searchField);
+                searchValue = nameSearchValue.getText();
+                NameSearchCall search = new NameSearchCall(searchValue);
                 displayView.setListData(NameSearchCall.get_meal_results().toArray());
             }
         });
@@ -132,6 +133,7 @@ public class searchByName extends JFrame{
         showDetails.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 int idM = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
                 String strM = MealItems.mealList.get(displayView.getSelectedIndex()).getStrmeal();
                 String strA = MealItems.mealList.get(displayView.getSelectedIndex()).getStrarea();
@@ -141,6 +143,7 @@ public class searchByName extends JFrame{
                 System.out.println();
                 MealsInfo meal = new MealsInfo();
                 meal.setMealInfo(idM, strM, strA, strC, strI, sedit);
+                meal.setSearchValue(searchValue);
                 meal.setVisible(true);
             }
         });

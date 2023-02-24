@@ -18,6 +18,8 @@ public class MealsInfo extends JFrame{
     private JButton btnBack;
     private JButton saveData;
 
+    private String userSearchValue;
+
 
     public MealsInfo() {
         setContentPane(mealsInfo);
@@ -31,8 +33,10 @@ public class MealsInfo extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                HomeScreen s1 = new HomeScreen();
+                searchByName s1 = new searchByName();
                 s1.setVisible(true);
+                s1.setSearchValue(getSearchValue());
+                s1.setApiCall(getSearchValue());
             }
         });
         saveData.addActionListener(new ActionListener() {
@@ -71,5 +75,13 @@ public class MealsInfo extends JFrame{
     private void createUIComponents() {
         // TODO: place custom component creation code here
         miniLogo = new JLabel(new ImageIcon("mini_image.png"));
+    }
+
+    public void setSearchValue(String searchValue){
+        userSearchValue = searchValue;
+    }
+
+    public String getSearchValue(){
+        return userSearchValue;
     }
 }
