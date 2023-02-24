@@ -151,5 +151,14 @@ public class searchByName extends JFrame{
         //Εισαγωγή εικόνας
         miniLogo = new JLabel(new ImageIcon("mini_image.png"));
     }
+
+    public void setSearchValue(String value){
+        nameSearchValue.setText(value);
+    }
+
+    public void setApiCall(String value){
+        NameSearchCall secSearch = new NameSearchCall(value);
+        displayView.setListData(secSearch.get_meal_results().toArray());
+    }
 }
 

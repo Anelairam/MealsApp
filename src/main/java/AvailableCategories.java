@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AvailableCategories extends JFrame {
     private JPanel CategoryList;
@@ -9,6 +11,9 @@ public class AvailableCategories extends JFrame {
     private JLabel categoryLabel;
     private JList mealNameList;
     private JButton goBack;
+    private JButton searchByNameBtn;
+
+    private String userSelection;
 
     public AvailableCategories(){
         setContentPane(CategoryList);
@@ -31,12 +36,31 @@ public class AvailableCategories extends JFrame {
                 mealNameList.setListData(MealByCategoryCall.getMealNameResults().toArray());
             }
         });
+
+        mealNameList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                userSelection = mealNameList.getSelectedValue().toString();
+                searchByNameBtn.setVisible(true);
+            }
+        });
         goBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 HomeScreen s1 = new HomeScreen();
                 s1.setVisible(true);
+            }
+        });
+        searchByNameBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                searchByName search = new searchByName();
+                search.setVisible(true);
+                search.setApiCall(userSelection);
+                search.setSearchValue(userSelection);
             }
         });
     }
