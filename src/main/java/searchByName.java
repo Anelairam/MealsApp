@@ -110,6 +110,7 @@ public class searchByName extends JFrame{
                             int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
                             boolean found = false;
                             DBfunctions.selectMeal(idm, found);
+
                             int idM = DBfunctions.getIdMeal();
                             String strM = DBfunctions.getStrMeal();
                             String strA = DBfunctions.getStrCategory();

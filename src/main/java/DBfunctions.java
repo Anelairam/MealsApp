@@ -119,10 +119,10 @@ public class DBfunctions {
         try{
             Connection connection = connect();
             Statement statement = connection.createStatement();
-            String selectSQL = "Select * from MEAL";
+            String selectSQL = "Select * from MEAL order by VIEWSTATS DESC";
             ResultSet rs = statement.executeQuery(selectSQL);
             while (rs.next()) {
-                System.out.println(rs.getInt("IDMEAL")+","+rs.getString("STRMEAL")+","+rs.getString("STRCATEGORY")+","+rs.getString("STRAREA"));
+                System.out.println(rs.getInt("IDMEAL")+","+rs.getString("STRMEAL")+","+rs.getString("STRCATEGORY")+","+rs.getString("STRAREA")+","+rs.getInt("VIEWSTATS"));
             }
             statement.close();
             connection.close();

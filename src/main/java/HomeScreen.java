@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
 public class HomeScreen extends JFrame{
     private JPanel Main;
     private JButton mealsDataButton;
@@ -60,6 +61,17 @@ public class HomeScreen extends JFrame{
 
     });
 
+        statisticsOfMealsDataButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==statisticsOfMealsDataButton){
+                    dispose();
+
+                    ViewDatabase vd = new ViewDatabase();
+                    vd.setVisible(true);
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
