@@ -11,7 +11,7 @@ public class searchByName extends JFrame{
     private JButton searchButton;
     private JList displayView;
 //    private JButton saveData;
-    private JButton deleteData;
+//    private JButton deleteData;
 //    private JButton editMealButton;
     private JButton viewDBButton;
     private JScrollPane scroll;
@@ -75,23 +75,23 @@ public class searchByName extends JFrame{
                 //System.out.println("-->" + idm);
             }
         });
-
+// <------------------------To be removed if the UAT passes---------------------------->
         //button delete meal from db
-        deleteData.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                JFrame frame = new JFrame("Delete");
-
-                if (JOptionPane.showConfirmDialog( frame,"Delete Meal from the database","MealsAPP",
-                        JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
-                    int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
-                    DBfunctions.DeleteNewMeal (idm);
-
-                }
-            }
-        });
-
+//        deleteData.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                super.mouseClicked(e);
+//                JFrame frame = new JFrame("Delete");
+//
+//                if (JOptionPane.showConfirmDialog( frame,"Delete Meal from the database","MealsAPP",
+//                        JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
+//                    int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
+//                    DBfunctions.DeleteNewMeal (idm);
+//
+//                }
+//            }
+//        });
+//<----------------------------------------------------------------------------------->
         //view database contents on the terminal
         viewDBButton.addMouseListener(new MouseAdapter() {
             @Override

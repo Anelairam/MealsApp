@@ -117,7 +117,19 @@ public class MealsInfo extends JFrame{
         deleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                JFrame frame = new JFrame("Delete");
+                if (JOptionPane.showConfirmDialog( frame,"Delete Meal from the database","MealsAPP",
+                        JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                    System.out.println("You pressed delete");
+                    int idm = Integer.valueOf(idMeal.getText());
+                    boolean found = false;
+                    DBfunctions.selectMeal(idm, found);
+                    if (DBfunctions.getfound() == true) {
+                        DBfunctions.DeleteNewMeal(idm);
+                    }else{
+                        System.out.println("Meal not found in DB");
+                    }
+                }
             }
         });
     }
