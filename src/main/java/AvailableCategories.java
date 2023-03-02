@@ -60,7 +60,7 @@ public class AvailableCategories extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 searchByName search = new searchByName();
-                search.setComingScreenId(screenId);
+              //  search.setComingScreenId(screenId);
                 search.setVisible(true);
                 search.setApiCall(userSelection);
                 search.setSearchValue(userSelection);
