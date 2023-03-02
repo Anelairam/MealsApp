@@ -18,7 +18,11 @@ public class searchByName extends JFrame{
     private JButton showDetails;
     private String searchValue;
 
+    private int screenId;
+    private int comingScreenId;
+
     public searchByName(){
+        screenId = 1;
         setContentPane(nameSearchPanel);
         setTitle("Search meals by name");
         setSize(650, 500);
@@ -182,9 +186,16 @@ public class searchByName extends JFrame{
         nameSearchValue.setText(value);
     }
 
+
     public void setApiCall(String value){
         NameSearchCall secSearch = new NameSearchCall(value);
         displayView.setListData(secSearch.get_meal_results().toArray());
+        displayView.setSelectedIndex(0);
+        showDetails.setVisible(true);
+    }
+
+    public void setComingScreenId(int value){
+        comingScreenId = value;
     }
 }
 

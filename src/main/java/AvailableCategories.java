@@ -15,7 +15,9 @@ public class AvailableCategories extends JFrame {
 
     private String userSelection;
 
+    private int screenId;
     public AvailableCategories(){
+        screenId=3;
         setContentPane(CategoryList);
         setTitle("Category List");
         setSize(650,500);
@@ -58,6 +60,7 @@ public class AvailableCategories extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 searchByName search = new searchByName();
+                search.setComingScreenId(screenId);
                 search.setVisible(true);
                 search.setApiCall(userSelection);
                 search.setSearchValue(userSelection);

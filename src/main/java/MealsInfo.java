@@ -22,6 +22,8 @@ public class MealsInfo extends JFrame{
 
     private String userSearchValue;
 
+    private int screenId;
+
     public MealsInfo() {
         setContentPane(mealsInfo);
         setTitle("Meal Information");
@@ -30,6 +32,7 @@ public class MealsInfo extends JFrame{
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         strInstructions.setLineWrap(true);
+        screenId = 2;
         btnBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

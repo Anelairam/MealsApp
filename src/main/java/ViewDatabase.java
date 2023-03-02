@@ -1,9 +1,15 @@
+import javax.print.attribute.Attribute;
+import javax.print.attribute.AttributeSet;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.OrientationRequested;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.MessageFormat;
 
 public class ViewDatabase extends JFrame{
     private JTable table1;
@@ -50,6 +56,12 @@ public class ViewDatabase extends JFrame{
                 dispose();
                 HomeScreen s1 = new HomeScreen();
                 s1.setVisible(true);
+            }
+        });
+        expPDFBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
