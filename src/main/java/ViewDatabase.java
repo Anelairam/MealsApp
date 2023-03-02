@@ -1,15 +1,13 @@
-import javax.print.attribute.Attribute;
-import javax.print.attribute.AttributeSet;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.OrientationRequested;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.MessageFormat;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ViewDatabase extends JFrame{
     private JTable table1;
@@ -17,11 +15,9 @@ public class ViewDatabase extends JFrame{
     private JButton expPDFBtn;
     private JButton goBackBtn;
     private JPanel ViewDatabase;
-    private int idmeal;
-    private String strmeal;
-    private String strcate;
-    private String strarea;
-    private int views;
+    private int idmeal, viewstats;
+    private String strmeal, strcate, strarea ;
+
 
 
     public ViewDatabase() {
@@ -40,28 +36,27 @@ public class ViewDatabase extends JFrame{
         table1.setForeground(Color.white);
 
         model.setColumnIdentifiers(new String[]{"idMeal", "strMeal", "strCategory", "strArea", "Views"});
-        //model.addRow(new Object[],DBfunctions.getStrArea());
         //Create Table header
         Object[] datahd = {"idMeal", "strMeal", "strCategory", "strArea", "Views"};
         model.addRow(datahd);
         //Read all data from database ordered by descending VIEWSTATS
         DBfunctions.selectAll();
-        //Object[] datadt = {"1","stra","strb","strc","2"};
-        Object[] datadt = {"1","stra","strb","strc","2"};
-        model.addRow(datadt);
-
+        //Εμφάνιση στον πίνακα
+        Object[] datadt = new Object[5];
+        for (int y = 0; y <= DBfunctions.result.size()-1; y++) {
+            for (int x = 0; x <= 4; x++){
+                datadt[x] = DBfunctions.result.get(y).get(x);
+            }
+            model.addRow(datadt);
+        }
         goBackBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                HomeScreen s1 = new HomeScreen();
-                s1.setVisible(true);
-            }
-        });
-        expPDFBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+                if (e.getSource() == goBackBtn){
+                    dispose();
+                    HomeScreen s1 = new HomeScreen();
+                    s1.setVisible(true);
+                }
             }
         });
     }

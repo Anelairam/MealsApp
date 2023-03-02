@@ -1,12 +1,18 @@
+
 import javax.swing.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.*;
 
 public class DBfunctions {
 
-    private static int idMeal, stats_view;
+    private static int idMeal, viewStats;
     private static String strMeal, strCategory, strArea, strInstructions;
 
     private static boolean fnd;
+    static final int numcol = 4;
+    static ArrayList<ArrayList<String>> result = new ArrayList<>(numcol);
 
     //Create db table
     static void CreateTableAndData(){
@@ -121,18 +127,33 @@ public class DBfunctions {
             Statement statement = connection.createStatement();
             String selectSQL = "Select * from MEAL order by VIEWSTATS DESC";
             ResultSet rs = statement.executeQuery(selectSQL);
+
+            int counter = 0;
+            result.clear();
+
             while (rs.next()) {
-                System.out.println(rs.getInt("IDMEAL")+","+rs.getString("STRMEAL")+","+rs.getString("STRCATEGORY")+","+rs.getString("STRAREA")+","+rs.getInt("VIEWSTATS"));
+                result.add(new ArrayList<>());
+                result.get(counter).add(rs.getString("IDMEAL"));
+                result.get(counter).add(rs.getString("STRMEAL"));
+                result.get(counter).add(rs.getString("STRCATEGORY"));
+                result.get(counter).add(rs.getString("STRAREA"));
+                result.get(counter).add(rs.getString("VIEWSTATS"));
+                counter++;
+                //      names.addAll((Collection<? extends String>) rs);
+
             }
+            System.out.println("result list:" + counter + " " +result);
             statement.close();
             connection.close();
             System.out.println("Done Select All!");
         } catch (SQLException throwables) {
             System.out.println(throwables.getLocalizedMessage());
         }
+
     }
 
     //Selection query specific meal
+    //Αναζήτηση του γεύματος που επιλέχθηκε απο λίστα
     static void selectMeal(int idMeal, boolean found){
         DBfunctions.idMeal = idMeal;
 
@@ -147,6 +168,7 @@ public class DBfunctions {
             strCategory = "";
             strArea = "";
             strInstructions = "";
+
             if (!rs.next()) {
                 //System.out.println("No Data found in the Database");
                 JOptionPane.showMessageDialog(null,"No Data found in the Database");
@@ -218,8 +240,43 @@ public class DBfunctions {
         return strInstructions;
     }
 
+    public static int getViewStats(){return viewStats; }
+
     public static boolean getfound(){ return fnd; }
 
+    static void selectAll2(){
 
+        try{
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+            String selectSQL = "Select * from MEAL order by VIEWSTATS DESC";
+            ResultSet rs = statement.executeQuery(selectSQL);
+
+            int counter = 0;
+            result.clear();
+
+            while (rs.next()) {
+                result.add(new ArrayList<>());
+                result.get(counter).add(rs.getString("IDMEAL"));
+                result.get(counter).add(rs.getString("STRMEAL"));
+                result.get(counter).add(rs.getString("STRCATEGORY"));
+                result.get(counter).add(rs.getString("STRAREA"));
+                result.get(counter).add(rs.getString("VIEWSTATS"));
+                counter++;
+          //      names.addAll((Collection<? extends String>) rs);
+
+            }
+            System.out.println("result list:" + counter + " " +result);
+            statement.close();
+            connection.close();
+            System.out.println("Done Select All!");
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getLocalizedMessage());
+        }
+    }
+
+    private ArrayList<ArrayList<String>> getResults(){
+        return result;
+    }
 }
 
