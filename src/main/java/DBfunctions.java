@@ -41,7 +41,7 @@ public class DBfunctions {
     static void insertNewMeal (int idMeal, String strMeal, String strArea, String strCategory, String strInstructions){
         try{
             Connection connection = connect();
-            String insertSQL = "Insert into MEAL (IDMEAL, STRMEAL, STRCATEGORY, STRAREA, STRINSTRUCTIONS) values(?,?,?,?,?)";
+            String insertSQL = "Insert into MEAL (IDMEAL, STRMEAL, STRCATEGORY, STRAREA, STRINSTRUCTIONS, VIEWSTATS) values(?,?,?,?,?,0)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
             preparedStatement.setInt(1, idMeal);
             preparedStatement.setString(2,strMeal);
@@ -54,8 +54,8 @@ public class DBfunctions {
                 //System.out.println(count+" record inserted");
                 JOptionPane.showMessageDialog(null,"record inserted");
             }else{
-                //System.out.println("Something went wrong. Check the exception");
-                JOptionPane.showMessageDialog(null,"record inserted");
+                System.out.println("Something went wrong. Check the exception");
+                JOptionPane.showMessageDialog(null,"Something went wrong. ");
             }
             preparedStatement.close();
             connection.close();
@@ -69,8 +69,8 @@ public class DBfunctions {
     static void UpdateMeal (int idMeal, String strMeal, String strArea, String strCategory, String strInstructions){
         try{
             Connection connection = connect();
-            String insertSQL = "Update MEAL set STRMEAL = ?, STRCATEGORY = ?, STRAREA = ?, STRINSTRUCTIONS = ? where IDMEAL = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+            String updateSQL = "Update MEAL set STRMEAL = ?, STRCATEGORY = ?, STRAREA = ?, STRINSTRUCTIONS = ? where IDMEAL = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(updateSQL);
             preparedStatement.setString(1,strMeal);
             preparedStatement.setString(2,strArea);
             preparedStatement.setString(3,strCategory);
@@ -82,8 +82,8 @@ public class DBfunctions {
                 //System.out.println(count+" record updated");
                 JOptionPane.showMessageDialog(null,"record updated");
             }else{
-                //System.out.println("Something went wrong. Check the exception");
-                JOptionPane.showMessageDialog(null,"record updated");
+                System.out.println("Something went wrong. Check the exception");
+                JOptionPane.showMessageDialog(null,"Something went wrong.");
             }
             preparedStatement.close();
             connection.close();
@@ -93,6 +93,30 @@ public class DBfunctions {
         }
     }
 
+
+    //update viewstats (increment by 1)
+    static void UpdateViewStats (int idMeal){
+        try{
+            Connection connection = connect();
+            String updateSQL = "Update MEAL set VIEWSTATS = VIEWSTATS + 1  where IDMEAL = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(updateSQL);
+            preparedStatement.setInt(1, idMeal);
+
+            int count = preparedStatement.executeUpdate();
+            if (count>0) {
+                System.out.println(count+" record updated view counter+1");
+                //JOptionPane.showMessageDialog(null,"record updated - counter +1");
+            }else{
+                System.out.println("Something went wrong. Check the exception");
+                //JOptionPane.showMessageDialog(null,"record updated");
+            }
+            preparedStatement.close();
+            connection.close();
+            System.out.println("Done Update!");
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getLocalizedMessage());
+        }
+    }
 
     //Delete meal from the database
     static void DeleteNewMeal (int idMeal){
@@ -105,10 +129,10 @@ public class DBfunctions {
 
             if (count>0) {
                 //System.out.println(count+"DB - record deleted");
-                JOptionPane.showMessageDialog(null,"record deleted");
+                JOptionPane.showMessageDialog(null,"DB - record deleted");
             }else{
                 //System.out.println("DB - record not found");
-                JOptionPane.showMessageDialog(null,"record deleted");
+                JOptionPane.showMessageDialog(null,"DB - record not found");
             }
             preparedStatement.close();
             connection.close();
@@ -140,9 +164,16 @@ public class DBfunctions {
                 result.get(counter).add(rs.getString("VIEWSTATS"));
                 counter++;
                 //      names.addAll((Collection<? extends String>) rs);
+                System.out.println( rs.getString("IDMEAL") + "\t|" +
+                        rs.getString("STRMEAL") + "\t\t|" +
+                        rs.getString("STRCATEGORY") + "\t|" +
+                        rs.getString("STRAREA") + "\t|" +
+                        rs.getString("VIEWSTATS")
+
+                );
 
             }
-            System.out.println("result list:" + counter + " " +result);
+            //System.out.println("result list:" + counter + " " +result);
             statement.close();
             connection.close();
             System.out.println("Done Select All!");

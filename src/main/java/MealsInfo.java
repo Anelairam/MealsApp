@@ -78,7 +78,7 @@ public class MealsInfo extends JFrame{
                         strCate.setText(strCate.getText());
                         strMealArea.setText(strMealArea.getText());
                         strInstructions.setText(strInstructions.getText());
-                        System.out.println("update db");
+                        //System.out.println("update db");
                     }else {
 //                      if the data doesn't exist, the system saves the information in the db.
                         String strm = strMeal.getText();
@@ -135,6 +135,7 @@ public class MealsInfo extends JFrame{
                     DBfunctions.selectMeal(idm, found);
                     if (DBfunctions.getfound() == true) {
                         DBfunctions.DeleteNewMeal(idm);
+                        found = false;
                     }else{
                         System.out.println("Meal not found in DB");
                     }
@@ -145,6 +146,7 @@ public class MealsInfo extends JFrame{
 
 //  Method that enables the editing fields
     public void setMealInfo(int idm, String name, String area, String category, String inst, boolean sedit){
+        //enable fields for editing
         if (sedit == true){
             strMeal.setEditable(true);
             strCate.setEditable(true);

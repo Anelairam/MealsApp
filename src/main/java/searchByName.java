@@ -86,6 +86,7 @@ public class searchByName extends JFrame{
                     String strA = DBfunctions.getStrCategory();
                     String strC = DBfunctions.getStrArea();
                     String strI = DBfunctions.getStrInstructions();
+                    DBfunctions.UpdateViewStats(idM);
                     MealsInfo meal = new MealsInfo();
                     boolean sedit = false;
                     meal.setMealInfo(idM, strM, strA, strC, strI, sedit);
