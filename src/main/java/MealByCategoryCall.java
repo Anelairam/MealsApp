@@ -13,27 +13,30 @@ public class MealByCategoryCall {
     static List<String> meal_name = new ArrayList<>();
 
     public MealByCategoryCall(String category){
+//      Setting up the API call to receive the available meals based on the category selected from the user
         String baseUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
         String urlToCall = baseUrl + category;
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(urlToCall).build();
 
+//      API response handling
         try (Response response = client.newCall(request).execute()) {
-            System.out.println("Response : " + response);
+//            System.out.println("Response : " + response); ------------------------------->to delete
             if (response.isSuccessful() && response.body() != null) {
                 String responseString = response.body().string();
-                System.out.println(responseString);
-                //ppep 11.02.23 - Create Json
+//              System.out.println(responseString); ------------------------------->to delete
+//              Creating JSON
                 GsonBuilder builder = new GsonBuilder();
                 builder.setPrettyPrinting();
                 Gson gson = builder.create();
 
                 JsonObject json = gson.fromJson(responseString, JsonObject.class);
-                System.out.println(json);
+//              System.out.println(json); ------------------------------->to delete
 
+//              Initializing mealsArray to null
                 JsonArray mealsArray = null;
                 if (json.get("meals").isJsonNull()) {
-                    //System.out.println("Data not found");
+                    //System.out.println("Data not found"); ------------------------------->to delete
                     JOptionPane.showMessageDialog(null, "Data not found");
                 } else {
                     mealsArray = json.get("meals").getAsJsonArray();

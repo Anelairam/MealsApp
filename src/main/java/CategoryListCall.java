@@ -12,23 +12,24 @@ public class CategoryListCall {
     static List<CategoryItems> categoryList = new ArrayList<>();
 
     public CategoryListCall() {
+//      Setting up the API call to receive the available categories
         String CategoryUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
-
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(CategoryUrl).build();
 
+//      API response handling
         try (Response response = client.newCall(request).execute()) {
-            System.out.println("Response : " + response);
+//           System.out.println("Response : " + response); ------------------------------->to delete
             if (response.isSuccessful() && response.body() != null) {
                 String responseString = response.body().string();
-                System.out.println(responseString);
-                //ppep 11.02.23 - Create Json
+//                System.out.println(responseString); ------------------------------->to delete
+//              Creating Json
                 GsonBuilder builder = new GsonBuilder();
                 builder.setPrettyPrinting();
                 Gson gson = builder.create();
 
                 JsonObject json = gson.fromJson(responseString, JsonObject.class);
-                System.out.println(json);
+//                System.out.println(json); ------------------------------->to delete
 
                 JsonArray categoriesArray = json.get("categories").getAsJsonArray();
 

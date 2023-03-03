@@ -10,8 +10,6 @@ public class CategoryItems {
         this.idcategory = idCategory;
         this.strcategory = strCategory;
     }
-
     public int getIdcategory(){return idcategory;}
-
     public String getStrcategory(){return strcategory;}
 }
