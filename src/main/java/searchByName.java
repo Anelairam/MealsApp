@@ -14,6 +14,9 @@ public class searchByName extends JFrame{
     private JScrollPane scroll;
     private JButton showDetails;
     private String searchValue;
+    private int comingScreen;
+    private String comingCat;
+    private int comingIndex;
 
     public searchByName(){
         setContentPane(nameSearchPanel);
@@ -34,9 +37,17 @@ public class searchByName extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == goBack){
-                    dispose();
-                    HomeScreen s1 = new HomeScreen();
-                    s1.setVisible(true);
+                    if (comingScreen == 3){
+                        dispose();
+                        AvailableCategories c1 = new AvailableCategories();
+                        c1.setVisible(true);
+                        c1.setComingCategory(comingCat, comingIndex);
+                    }
+                    else {
+                        dispose();
+                        HomeScreen s1 = new HomeScreen();
+                        s1.setVisible(true);
+                    }
                 }
             }
         });
@@ -46,12 +57,9 @@ public class searchByName extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                //System.out.println("mouse click displayview" + displayView.getSelectedIndex());
                 MealItems.mealList.get(displayView.getSelectedIndex());
                 int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
                 showDetails.setVisible(true);
-
-                //System.out.println("-->" + idm);
             }
         });
 
@@ -81,8 +89,10 @@ public class searchByName extends JFrame{
                     MealsInfo meal = new MealsInfo();
                     boolean sedit = false;
                     meal.setMealInfo(idM, strM, strA, strC, strI, sedit);
-                    meal.setSearchValue(searchValue);
+                    meal.setComingScreen(comingScreen);
+//                    meal.setSearchValue(searchValue);
                     meal.setVisible(true);
+                    meal.setIndex(comingIndex);
                 }
                 else{
                     System.out.println("Not found in db from search btn");
@@ -94,8 +104,10 @@ public class searchByName extends JFrame{
                     System.out.println();
                     MealsInfo meal = new MealsInfo();
                     meal.setMealInfo(idM, strM, strA, strC, strI, sedit);
-                    meal.setSearchValue(searchValue);
+                    meal.setComingScreen(comingScreen);
+//                    meal.setSearchValue(searchValue);
                     meal.setVisible(true);
+                    meal.setIndex(comingIndex);
                 }
 
             }
@@ -115,6 +127,15 @@ public class searchByName extends JFrame{
     public void setApiCall(String value){
         NameSearchCall secSearch = new NameSearchCall(value);
         displayView.setListData(secSearch.get_meal_results().toArray());
+        displayView.setSelectedIndex(0);
+        showDetails.setVisible(true);
+    }
+
+    public int getComingScreen(){ return comingScreen;}
+    public void setComingScreen(int value){ comingScreen = value;}
+    public void setCategoryAndIndex(String value, int index){
+        comingCat = value;
+        comingIndex = index;
     }
 }
 

@@ -12,28 +12,26 @@ public class AvailableCategories extends JFrame {
     private JList mealNameList;
     private JButton goBack;
     private JButton searchByNameBtn;
-
     private String userSelection;
+    private String comingCategory;
+    private int selectedMealIndex;
+    private int cScreenId = 3;
 
-    private int screenId;
-    public AvailableCategories(){
-        screenId=3;
+    public AvailableCategories() {
         setContentPane(CategoryList);
         setTitle("Category List");
-        setSize(650,500);
+        setSize(650, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         CategoryListCall category = new CategoryListCall();
-        for (int i=0; i<category.getCategoryResults().size(); i++){
-                selectBox.addItem(CategoryListCall.getCategoryResults().get(i));
+        for (int i = 0; i < category.getCategoryResults().size(); i++) {
+            selectBox.addItem(CategoryListCall.getCategoryResults().get(i));
         }
 
         selectBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MealByCategoryCall categoryName = new MealByCategoryCall(selectBox.getSelectedItem().toString());
-//             selectBox.getSelectedItem();
                 mealNameList.setVisible(true);
                 mealNameList.setListData(MealByCategoryCall.getMealNameResults().toArray());
             }
@@ -45,6 +43,7 @@ public class AvailableCategories extends JFrame {
                 super.mouseClicked(e);
                 userSelection = mealNameList.getSelectedValue().toString();
                 searchByNameBtn.setVisible(true);
+                selectedMealIndex=mealNameList.getSelectedIndex();
             }
         });
         goBack.addActionListener(new ActionListener() {
@@ -60,10 +59,11 @@ public class AvailableCategories extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 searchByName search = new searchByName();
-              //  search.setComingScreenId(screenId);
+                search.setComingScreen(cScreenId);
                 search.setVisible(true);
                 search.setApiCall(userSelection);
                 search.setSearchValue(userSelection);
+                search.setCategoryAndIndex(selectBox.getSelectedItem().toString(), selectedMealIndex);
             }
         });
     }
@@ -71,6 +71,16 @@ public class AvailableCategories extends JFrame {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        Logo= new JLabel(new ImageIcon("mini_image.png"));
+        Logo = new JLabel(new ImageIcon("mini_image.png"));
+    }
+
+    public int getcScreenId() {
+        return cScreenId;
+    }
+
+    public void setComingCategory(String value, int index) {
+        CategoryListCall category = new CategoryListCall();
+        selectBox.setSelectedItem(value);
+        mealNameList.setSelectedIndex(index);
     }
 }

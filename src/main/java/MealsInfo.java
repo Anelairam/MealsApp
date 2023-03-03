@@ -19,10 +19,11 @@ public class MealsInfo extends JFrame{
     private JButton saveData;
     private JButton editBtn;
     private JButton deleteBtn;
+    private int index;
 
-    private String userSearchValue;
-
-    private int screenId;
+//    private String userSearchValue;
+private int comingScreen;
+    private int mScreenId=2;
 
     public MealsInfo() {
         setContentPane(mealsInfo);
@@ -32,15 +33,16 @@ public class MealsInfo extends JFrame{
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         strInstructions.setLineWrap(true);
-        screenId = 2;
         btnBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 searchByName s1 = new searchByName();
                 s1.setVisible(true);
-                s1.setSearchValue(getSearchValue());
-                s1.setApiCall(getSearchValue());
+                s1.setSearchValue(strMeal.getText());
+                s1.setApiCall(strMeal.getText());
+                s1.setComingScreen(comingScreen);
+                s1.setCategoryAndIndex(strCate.getText(), index);
             }
         });
         saveData.addActionListener(new ActionListener() {
@@ -156,11 +158,11 @@ public class MealsInfo extends JFrame{
         miniLogo = new JLabel(new ImageIcon("mini_image.png"));
     }
 
-    public void setSearchValue(String searchValue){
-        userSearchValue = searchValue;
+    public int getmScreenId(){ return mScreenId;}
+    public void setComingScreen(int value){ comingScreen = value;}
+
+    public void setIndex(int comingIndex){
+        index = comingIndex;
     }
 
-    public String getSearchValue(){
-        return userSearchValue;
-    }
 }
