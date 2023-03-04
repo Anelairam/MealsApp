@@ -114,6 +114,20 @@ public class searchByName extends JFrame{
             }
         });
 
+//      On enter key pressed into the Jtextfiled for name search
+//      a new API call based on the user's input value is made.
+        nameSearchValue.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    displayView.clearSelection();
+                    searchValue = nameSearchValue.getText();
+                    NameSearchCall search = new NameSearchCall(searchValue);
+                    displayView.setListData(NameSearchCall.get_meal_results().toArray());
+                }
+            }
+        });
     }
 
     private void createUIComponents() {
