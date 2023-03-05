@@ -224,6 +224,37 @@ public class DBfunctions {
         }
 
     }
+
+    static void selectAll2(){
+
+        try{
+            Connection connection = connect();
+            Statement statement = connection.createStatement();
+            String selectSQL = "Select * from MEAL order by VIEWSTATS DESC";
+            ResultSet rs = statement.executeQuery(selectSQL);
+
+            int counter = 0;
+            result.clear();
+
+            while (rs.next()) {
+                result.add(new ArrayList<>());
+                result.get(counter).add(rs.getString("IDMEAL"));
+                result.get(counter).add(rs.getString("STRMEAL"));
+                result.get(counter).add(rs.getString("STRCATEGORY"));
+                result.get(counter).add(rs.getString("STRAREA"));
+                result.get(counter).add(rs.getString("VIEWSTATS"));
+                counter++;
+                //      names.addAll((Collection<? extends String>) rs);
+
+            }
+            System.out.println("result list:" + counter + " " +result);
+            statement.close();
+            connection.close();
+            System.out.println("Done Select All!");
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getLocalizedMessage());
+        }
+    }
     //ppep underconstruction
     static void checkdbifExist(){
         try{
@@ -274,37 +305,6 @@ public class DBfunctions {
     public static int getViewStats(){return viewStats; }
 
     public static boolean getfound(){ return fnd; }
-
-    static void selectAll2(){
-
-        try{
-            Connection connection = connect();
-            Statement statement = connection.createStatement();
-            String selectSQL = "Select * from MEAL order by VIEWSTATS DESC";
-            ResultSet rs = statement.executeQuery(selectSQL);
-
-            int counter = 0;
-            result.clear();
-
-            while (rs.next()) {
-                result.add(new ArrayList<>());
-                result.get(counter).add(rs.getString("IDMEAL"));
-                result.get(counter).add(rs.getString("STRMEAL"));
-                result.get(counter).add(rs.getString("STRCATEGORY"));
-                result.get(counter).add(rs.getString("STRAREA"));
-                result.get(counter).add(rs.getString("VIEWSTATS"));
-                counter++;
-          //      names.addAll((Collection<? extends String>) rs);
-
-            }
-            System.out.println("result list:" + counter + " " +result);
-            statement.close();
-            connection.close();
-            System.out.println("Done Select All!");
-        } catch (SQLException throwables) {
-            System.out.println(throwables.getLocalizedMessage());
-        }
-    }
 
     private ArrayList<ArrayList<String>> getResults(){
         return result;
