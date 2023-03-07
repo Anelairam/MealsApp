@@ -35,6 +35,9 @@ public class NameSearchCall {
                 JsonArray mealsArray = null;
                 if (json.get("meals").isJsonNull()) {
                     JOptionPane.showMessageDialog(null, "Data not found");
+                    meal_name.clear();
+                    mealList.clear();
+                    return;
                 } else {
                     mealsArray = json.get("meals").getAsJsonArray();
                 }
