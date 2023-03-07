@@ -92,5 +92,6 @@ public class AvailableCategories extends JFrame {
         CategoryListCall category = new CategoryListCall();
         selectBox.setSelectedItem(value);
         mealNameList.setSelectedIndex(index);
+        searchByNameBtn.setVisible(true);
     }
 }

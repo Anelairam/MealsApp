@@ -12,6 +12,7 @@ public class HomeScreen extends JFrame{
     private JButton statisticsOfMealsDataButton;
     private JButton exitButton;
     private JLabel imageLogo;
+    private JLabel infoLogo;
 
     public HomeScreen() {
 //      Initializating the JFrame/GUI of the class
@@ -71,10 +72,18 @@ public class HomeScreen extends JFrame{
                 }
             }
         });
+        infoLogo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                JOptionPane.showMessageDialog( null, "Μέλη ομάδας: Κεραμίδας Βασίλειος, Λιβαθηνοπούλου Μαριαλένα, Πέππας Βασίλειος" );
+            }
+        });
     }
 
 //  Method for inserting the logo to the main page
     private void createUIComponents() {
         imageLogo = new JLabel(new ImageIcon("image.png"));
+        infoLogo = new JLabel(new ImageIcon("icon-info.png"));
     }
 }
