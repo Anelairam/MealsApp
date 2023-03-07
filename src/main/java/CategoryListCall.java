@@ -19,18 +19,14 @@ public class CategoryListCall {
 
 //      API response handling
         try (Response response = client.newCall(request).execute()) {
-//           System.out.println("Response : " + response); ------------------------------->to delete
             if (response.isSuccessful() && response.body() != null) {
                 String responseString = response.body().string();
-//                System.out.println(responseString); ------------------------------->to delete
 //              Creating Json
                 GsonBuilder builder = new GsonBuilder();
                 builder.setPrettyPrinting();
                 Gson gson = builder.create();
 
                 JsonObject json = gson.fromJson(responseString, JsonObject.class);
-//                System.out.println(json); ------------------------------->to delete
-
                 JsonArray categoriesArray = json.get("categories").getAsJsonArray();
 
                 //initialize
@@ -44,10 +40,10 @@ public class CategoryListCall {
                     CategoryItems catitem = new CategoryItems(m.get("idCategory").getAsInt(), m.get("strCategory").getAsString());
                     categoryList.add(catitem);
                 }
-
             } else {
                 System.out.println("Not found : " + response);
             }
+//       exception handling
         } catch (IOException e) {
             e.printStackTrace();
         }

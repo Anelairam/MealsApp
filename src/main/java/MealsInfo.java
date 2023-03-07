@@ -78,7 +78,6 @@ public class MealsInfo extends JFrame{
                         strCate.setText(strCate.getText());
                         strMealArea.setText(strMealArea.getText());
                         strInstructions.setText(strInstructions.getText());
-                        //System.out.println("update db");
                     }else {
 //                      if the data doesn't exist, the system saves the information in the db.
                         String strm = strMeal.getText();
@@ -86,7 +85,6 @@ public class MealsInfo extends JFrame{
                         String strc = strCate.getText();
                         String stri = strInstructions.getText();
                         DBfunctions.insertNewMeal(idm, strm, stra, strc, stri );
-//                      System.out.println("save db"); ------------------------------->to delete
                     }
                 }
             }

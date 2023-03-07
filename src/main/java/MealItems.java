@@ -1,6 +1,7 @@
 import java.util.List;
 
 public class MealItems implements IGiveMealList{
+//    Core class to gather data from JSON and add them to the lists and db
     private int idmeal;
     private String strmeal;
     private String strarea;

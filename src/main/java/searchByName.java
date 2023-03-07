@@ -10,7 +10,6 @@ public class searchByName extends JFrame{
     private JTextField nameSearchValue;
     private JButton searchButton;
     private JList displayView;
-    private JButton viewDBButton;
     private JScrollPane scroll;
     private JButton showDetails;
     private String searchValue;
@@ -60,15 +59,6 @@ public class searchByName extends JFrame{
                 MealItems.mealList.get(displayView.getSelectedIndex());
                 int idm = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
                 showDetails.setVisible(true);
-            }
-        });
-
-        //view database contents on the terminal
-        viewDBButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                DBfunctions.selectAll();
             }
         });
 

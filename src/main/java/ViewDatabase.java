@@ -11,25 +11,19 @@ import java.io.*;
 
 public class ViewDatabase extends JFrame{
     private JTable table1;
-    private JButton viewDbBtn;
     private JButton expPDFBtn;
     private JButton goBackBtn;
     private JPanel ViewDatabase;
     private int idmeal, viewstats;
     private String strmeal, strcate, strarea ;
 
-
-
     public ViewDatabase() {
-
-
         setContentPane(ViewDatabase);
         setTitle("Database Information");
         setSize(650,500);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
         //Create Table model
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
@@ -89,14 +83,10 @@ public class ViewDatabase extends JFrame{
                         JOptionPane.showMessageDialog(null,"Export to PDF (meals.pdf) -  Done! ");
                     }
                     catch(Exception e){}
-
                 }
-
-
             }
         });
     }
-
 }
 
 

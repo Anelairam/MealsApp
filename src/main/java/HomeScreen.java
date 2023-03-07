@@ -76,7 +76,7 @@ public class HomeScreen extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                JOptionPane.showMessageDialog( null, "Μέλη ομάδας: Κεραμίδας Βασίλειος, Λιβαθηνοπούλου Μαριαλένα, Πέππας Βασίλειος" );
+                JOptionPane.showMessageDialog( null, "Μέλη ομάδας: Κεραμίδας Βασίλειος, Λιβαθηνοπούλου Μαριαλένα, Πέππας Παναγιώτης" );
             }
         });
     }

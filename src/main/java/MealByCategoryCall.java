@@ -21,28 +21,26 @@ public class MealByCategoryCall {
 
 //      API response handling
         try (Response response = client.newCall(request).execute()) {
-//            System.out.println("Response : " + response); ------------------------------->to delete
             if (response.isSuccessful() && response.body() != null) {
                 String responseString = response.body().string();
-//              System.out.println(responseString); ------------------------------->to delete
+
 //              Creating JSON
                 GsonBuilder builder = new GsonBuilder();
                 builder.setPrettyPrinting();
                 Gson gson = builder.create();
 
                 JsonObject json = gson.fromJson(responseString, JsonObject.class);
-//              System.out.println(json); ------------------------------->to delete
 
 //              Initializing mealsArray to null
                 JsonArray mealsArray = null;
                 if (json.get("meals").isJsonNull()) {
-                    //System.out.println("Data not found"); ------------------------------->to delete
                     JOptionPane.showMessageDialog(null, "Data not found");
                 } else {
                     mealsArray = json.get("meals").getAsJsonArray();
                 }
-
+//              list clearnance
                 meal_name.clear();
+//              list popylation with data
                 for (int i = 0; i <= mealsArray.size() - 1; i++) {
                     JsonElement jsonElement = mealsArray.get(i);
                     JsonObject m = jsonElement.getAsJsonObject();
@@ -53,6 +51,7 @@ public class MealByCategoryCall {
             System.out.println("Not found : " + response);
 
         }
+//    exception handling
     } catch (IOException e) {
 
         e.printStackTrace();
