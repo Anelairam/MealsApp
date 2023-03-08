@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="3GE">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/3GE" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/3GE" recursive="false" />
+  </library>
+</component>
