@@ -2,7 +2,7 @@
   <library name="eclipse.birt.runtime.3_7_1.lowagie.text" type="repository">
     <properties maven-id="org.eclipse.birt.runtime.3_7_1:com.lowagie.text:2.1.7" />
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/birt/runtime/3_7_1/com.lowagie.text/2.1.7/com.lowagie.text-2.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/com.lowagie.text-2.1.7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

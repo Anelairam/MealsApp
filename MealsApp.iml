@@ -65,7 +65,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="apache.derby" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -121,5 +120,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="eclipse.birt.runtime.3_7_1.lowagie.text" level="project" />
+    <orderEntry type="library" name="apache.derby" level="project" />
   </component>
 </module>
