@@ -93,5 +93,6 @@ public class AvailableCategories extends JFrame {
         selectBox.setSelectedItem(value);
         mealNameList.setSelectedIndex(index);
         searchByNameBtn.setVisible(true);
+        userSelection = mealNameList.getSelectedValue().toString();
     }
 }

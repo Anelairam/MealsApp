@@ -60,7 +60,7 @@ public class MealsInfo extends JFrame{
 //                  For possitive user reposnse, the system checks if the data exist in the DB.
                     int idm = Integer.valueOf(idMeal.getText());
                     boolean found = false;
-                    DBfunctions.selectMeal(idm, found);
+                    DBfunctions.selectMeal(idm, found, mScreenId);
                     if (DBfunctions.getfound() == true) {
 //                      if the data exists, they system updates the db's data.
                         String strm = strMeal.getText();
@@ -103,7 +103,7 @@ public class MealsInfo extends JFrame{
                             JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
                         int idm = Integer.valueOf(idMeal.getText());
                         boolean found = false;
-                        DBfunctions.selectMeal(idm, found);
+                        DBfunctions.selectMeal(idm, found, mScreenId);
 //                      If the data exists in the db, the system enables the name, category,
 //                      origin and instructions for editing.
                         if (DBfunctions.getfound() == true) {
@@ -130,7 +130,7 @@ public class MealsInfo extends JFrame{
                     int idm = Integer.valueOf(idMeal.getText());
                     boolean found = false;
 //                  The system function locating the recipe if it exists in the database.
-                    DBfunctions.selectMeal(idm, found);
+                    DBfunctions.selectMeal(idm, found, mScreenId);
                     if (DBfunctions.getfound() == true) {
                         DBfunctions.DeleteNewMeal(idm);
                         found = false;

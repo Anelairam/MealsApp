@@ -16,6 +16,7 @@ public class searchByName extends JFrame{
     private int comingScreen;
     private String comingCat;
     private int comingIndex;
+    private int screenId = 1;
 
     public searchByName(){
         setContentPane(nameSearchPanel);
@@ -69,9 +70,8 @@ public class searchByName extends JFrame{
                 dispose();
                 int idM = MealItems.mealList.get(displayView.getSelectedIndex()).getIdmeal();
                 boolean found = false;
-                DBfunctions.selectMeal(idM, found);
+                DBfunctions.selectMeal(idM, found, screenId);
                 if (DBfunctions.getfound() == true) {
-                    System.out.println("Found in db from search btn");
                     String strM = DBfunctions.getStrMeal();
                     String strA = DBfunctions.getStrCategory();
                     String strC = DBfunctions.getStrArea();

@@ -173,7 +173,7 @@ public class DBfunctions {
 
     //Selection query specific meal
     //Meal search based on selection from the list
-    static void selectMeal(int idMeal, boolean found){
+    static void selectMeal(int idMeal, boolean found, int screenID){
         DBfunctions.idMeal = idMeal;
 
         try{
@@ -188,8 +188,13 @@ public class DBfunctions {
             strInstructions = "";
 
             if (!rs.next()) {
-                JOptionPane.showMessageDialog(null,"No Data found in the Database");
-                fnd = false;
+                if (screenID == 1){
+                    fnd = false;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,"No Data found in the Database");
+                    fnd = false;
+                }
             } else {
                 fnd = true;
                 //variables used by getters

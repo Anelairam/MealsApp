@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Wed Mar 08 00:05:50 EET 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0186-be1b-fa3f-0000022192d8 
-on database directory /home/pi/IdeaProjects/MealsApp/meals_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7ad041f3 
-Loaded from file:/home/pi/.m2/repository/org/apache/derby/derby/10.15.2.0/derby-10.15.2.0.jar
-java.vendor=Red Hat, Inc.
-java.runtime.version=17.0.6+10
-user.dir=/home/pi/IdeaProjects/MealsApp
-os.name=Linux
+Wed Mar 08 19:37:32 CET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0186-c283-a312-000001844938 
+on database directory C:\Users\mliva\IdeaProjects\MealsApp\meals_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Users/mliva/.m2/repository/org/apache/derby/derby/10.15.2.0/derby-10.15.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=17.0.5+9-LTS-191
+user.dir=C:\Users\mliva\IdeaProjects\MealsApp
+os.name=Windows 10
 os.arch=amd64
-os.version=6.1.14-200.fc37.x86_64
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
